@@ -6,9 +6,9 @@
 SoftwareSerial mySerial(3,2); //pin 2 = TX, pin 3 = RX (unused)
 
 //sensor pins
-int buyItPin = 4;
-int sellItPin = 6;
-int holdItPin = A1;
+int buyItPin = 7;
+int sellItPin = 8;
+int holdItPin = 9;
 
 //"start button" pin
 int rfidScannerPin = 5;
@@ -45,6 +45,7 @@ void setup() {
 	pinMode(rfidScannerPin, INPUT);
 	pinMode(buyItPin, INPUT);  
 	pinMode(sellItPin, INPUT);
+  pinMode(10, OUTPUT);
 	//holdItPin automatically set as an input due to its analog nature
 
 	// set start button state to LOW
@@ -112,6 +113,7 @@ void actionDetector(int action, int actionPin, string actionText, bool digital) 
 	if (actionCompleted == 1){
 		//do nothing
 		Serial.println("action completed");
+    digitalWrite(10, HIGH)
 		tone(3, 10000, 250);
 		delay(250);
 		noTone(3);
